@@ -17,7 +17,11 @@ export default function Selectedcity() {
 
     const [selectcomune, setSelectcomune] = useState();
 
-    console.log(selectcomune)
+    const [meteoparams, setMeteoparams] = useState();
+    console.log(meteoparams)
+
+    
+    
        
    
    
@@ -31,8 +35,24 @@ export default function Selectedcity() {
             console.log(error);
             
           });
-      }, []
+       }, []
       );
+      const loadmeteo = () => {
+        axios.get(`
+
+        https://api.openweathermap.org/data/2.5/weather?q=${selectcomune && selectcomune.nome},it&APPID=c2ea43919bd4aaf41cd693ede5cb50bb`)
+          .then(response => {
+            setMeteoparams(response.data);
+            
+          })
+          .catch(error => {
+            console.log(error);
+            
+          });}
+     
+       
+
+
   
     
      const  loadcom = (e)=> {axios.get('https://axqvoqvbfjpaamphztgd.functions.supabase.co/comuni/provincia/'+ e)
@@ -56,36 +76,41 @@ export default function Selectedcity() {
        console.log(error);
        
      }); }
+
+     
+     
+  
     
    
  
 
     return (
+     
         <>
-            <Container>
+            <Container className='my-3'>
                 <Row>
                     <Col md="3">
                     
-                        <Form.Select aria-label="Default select example" onChange={(e)=>  {loadcom(e.target.value); }}  >
+                        <Form.Select aria-label="Default select example" onChange={(e)=>  {loadcom(e.target.value);   }}  >
                             <option>Seleziona Provincia</option>
                             
                              {prov.map((e, index)=><option key={index}   value={e.nome}> {e.nome} </option>)}  
                              
                         </Form.Select>
 
-                    </Col>  </Row>
-                <Row>
+                    </Col>  
+                
                     <Col md="3">
-                        <Form.Select aria-label="Default select example" onChange={(e)=>  {icom (e.target.value);   }} >
+                        <Form.Select aria-label="Default select example" onChange={(e)=>  {icom (e.target.value); loadmeteo()  }} >
                             <option>Seleziona Comune</option>
                             {comune.map((e, index)=><option key={index}  name={e.codice} value={e.codice}> {e.nome} </option>)}  
                         </Form.Select>
-                    </Col>
-                </Row>
+                    </Col></Row>
+                
             </Container>
-          <Meteocard selectcomune={selectcomune}/>
+          <Meteocard selectcomune={selectcomune} meteoparams={meteoparams}/>
           
-
+          
         </>
     )
 }

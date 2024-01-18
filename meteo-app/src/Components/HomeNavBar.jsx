@@ -25,8 +25,7 @@ export default function HomeNavBar() {
          EpiWeathers
         </Navbar.Brand>
         <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Province</Nav.Link>
+            
             
           </Nav>
           <Form inline>
