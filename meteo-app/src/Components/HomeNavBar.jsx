@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+
 
 export default function HomeNavBar() {
   return (
@@ -31,14 +31,10 @@ export default function HomeNavBar() {
           <Form inline>
         <Row>
           <Col xs="auto">
-            <Form.Control
-              type="text"
-              placeholder="Inserisci Città"
-              className=" mr-sm-2"
-            />
+            
           </Col>
           <Col xs="auto">
-            <Button type="submit">Cerca</Button>
+           
           </Col>
         </Row>
       </Form>
