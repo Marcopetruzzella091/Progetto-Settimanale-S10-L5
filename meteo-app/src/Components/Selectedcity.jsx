@@ -18,8 +18,7 @@ export default function Selectedcity() {
     const [selectcomune, setSelectcomune] = useState();
 
     const [meteoparams, setMeteoparams] = useState();
-    console.log(meteoparams)
-
+    
     
     
        
